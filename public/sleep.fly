@@ -198,13 +198,13 @@ job sleep_parse_number(tok, lineno) {
   if hasDot == Yes {
     do {
       result = dec(tok)
-    } grabe (err) {
+    } grab (err) {
       ok = No
     }
   } ifnot {
     do {
       result = num(tok)
-    } grabe (err) {
+    } grab (err) {
       ok = No
     }
   }
@@ -435,7 +435,7 @@ job sleep_parse_import(importPath, baseDir, lineno) {
   text = ""
   do {
     text = filesystem.read(fullPath)
-  } grabe (err) {
+  } grab (err) {
     ok = No
   }
   if ok == No {
@@ -559,7 +559,7 @@ job parse(file) {
   text = ""
   do {
     text = filesystem.read(file)
-  } grabe (err) {
+  } grab (err) {
     ok = No
   }
   if ok == No {
