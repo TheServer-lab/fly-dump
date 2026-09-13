@@ -119,7 +119,7 @@ job http_parse_url(url) {
     portStr = hostPort[colonIdx + 1 : hpCount]
     do {
       port = num(portStr)
-    } grabe (err) {
+    } grab (err) {
       rt_throwv("http: invalid port in URL: {portStr}")
     }
   }
@@ -199,7 +199,7 @@ job http_parse_status_line(line) {
   statusStr = line[sp1 + 1 : sp2]
   do {
     give num(statusStr)
-  } grabe (err) {
+  } grab (err) {
     rt_throwv("http: invalid status code: {statusStr}")
   }
 }
@@ -301,7 +301,7 @@ job get(url) {
     raw = http_read_response(conn)
     net.close(conn)
     give http_parse_response(raw)
-  } grabe (err) {
+  } grab (err) {
     rt_throwv("http.get: {err}")
   }
 }
@@ -318,7 +318,7 @@ job get_tls(url) {
     raw = http_read_response(conn)
     net.close(conn)
     give http_parse_response(raw)
-  } grabe (err) {
+  } grab (err) {
     rt_throwv("http.get_tls: {err}")
   }
 }
